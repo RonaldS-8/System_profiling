@@ -1,0 +1,214 @@
+
+--- medium_128_baseline ---
+/home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 128 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 10
+Batch Size: 4, Test Type: forward, Mean: 0.018618 s, Standard deviation (population): 0.000329 s, Times (s): [0.019205266144126654, 0.018778654048219323, 0.01915169390849769, 0.018382064998149872, 0.01861064205877483, 0.018199451034888625, 0.018560552038252354, 0.018346463097259402, 0.018666704883798957, 0.018276027869433165]
+exit=0, report_missing=False
+
+--- medium_128_forward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_forward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 128 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-cce8.qdstrm'
+[1/1] [0%                          ] medium_128_forward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_128_forward.nsys-rep[1/1] [===========50%              ] medium_128_forward.nsys-rep[1/1] [===========51%              ] medium_128_forward.nsys-rep[1/1] [================69%         ] medium_128_forward.nsys-rep[1/1] [=====================88%    ] medium_128_forward.nsys-rep[1/1] [========================100%] medium_128_forward.nsys-rep[1/1] [========================100%] medium_128_forward.nsys-rep
+Batch Size: 4, Test Type: forward, Mean: 0.025716 s, Standard deviation (population): 0.000000 s, Times (s): [0.025715858908370137]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_forward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_128_backward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_backward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 128 --batch_sizes 4 --warmup_steps 5 --test_types backward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-e4ae.qdstrm'
+[1/1] [0%                          ] medium_128_backward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_128_backward.nsys-rep[1/1] [0%                          ] medium_128_backward.nsys-rep[1/1] [================68%         ] medium_128_backward.nsys-rep[1/1] [==================76%       ] medium_128_backward.nsys-rep[1/1] [====================85%     ] medium_128_backward.nsys-rep[1/1] [========================100%] medium_128_backward.nsys-rep[1/1] [========================100%] medium_128_backward.nsys-rep
+Batch Size: 4, Test Type: backward, Mean: 0.085171 s, Standard deviation (population): 0.000000 s, Times (s): [0.08517106110230088]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_backward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_128_both ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_both /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 128 --batch_sizes 4 --warmup_steps 5 --test_types both --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-0af4.qdstrm'
+[1/1] [0%                          ] medium_128_both.nsys-repProcessing events...
+[1/1] [0%                          ] medium_128_both.nsys-rep[1/1] [0%                          ] medium_128_both.nsys-rep[1/1] [=============59%            ] medium_128_both.nsys-rep[1/1] [==============64%           ] medium_128_both.nsys-rep[1/1] [================69%         ] medium_128_both.nsys-rep[1/1] [====================84%     ] medium_128_both.nsys-rep[1/1] [========================100%] medium_128_both.nsys-rep[1/1] [========================100%] medium_128_both.nsys-rep
+Batch Size: 4, Test Type: both, Mean: 0.107575 s, Standard deviation (population): 0.000000 s, Times (s): [0.10757529805414379]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_128_both.nsys-rep
+exit=0, report_missing=False
+
+--- medium_256_baseline ---
+/home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 256 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 10
+Batch Size: 4, Test Type: forward, Mean: 0.031513 s, Standard deviation (population): 0.000202 s, Times (s): [0.031540952855721116, 0.03173806215636432, 0.031697328900918365, 0.031076679937541485, 0.03142770589329302, 0.031530264066532254, 0.031662341207265854, 0.03174448502250016, 0.0313685720320791, 0.03134074900299311]
+exit=0, report_missing=False
+
+--- medium_256_forward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_forward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 256 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-d264.qdstrm'
+[1/1] [0%                          ] medium_256_forward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_256_forward.nsys-rep[1/1] [===========51%              ] medium_256_forward.nsys-rep[1/1] [===========52%              ] medium_256_forward.nsys-rep[1/1] [================70%         ] medium_256_forward.nsys-rep[1/1] [=====================88%    ] medium_256_forward.nsys-rep[1/1] [========================100%] medium_256_forward.nsys-rep[1/1] [========================100%] medium_256_forward.nsys-rep
+Batch Size: 4, Test Type: forward, Mean: 0.039541 s, Standard deviation (population): 0.000000 s, Times (s): [0.03954065218567848]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_forward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_256_backward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_backward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 256 --batch_sizes 4 --warmup_steps 5 --test_types backward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-d410.qdstrm'
+[1/1] [0%                          ] medium_256_backward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_256_backward.nsys-rep[1/1] [===============67%          ] medium_256_backward.nsys-rep[1/1] [==================76%       ] medium_256_backward.nsys-rep[1/1] [====================85%     ] medium_256_backward.nsys-rep[1/1] [========================100%] medium_256_backward.nsys-rep[1/1] [========================100%] medium_256_backward.nsys-rep
+Batch Size: 4, Test Type: backward, Mean: 0.101736 s, Standard deviation (population): 0.000000 s, Times (s): [0.10173598281107843]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_backward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_256_both ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_both /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 256 --batch_sizes 4 --warmup_steps 5 --test_types both --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-42be.qdstrm'
+[1/1] [0%                          ] medium_256_both.nsys-repProcessing events...
+[1/1] [0%                          ] medium_256_both.nsys-rep[1/1] [0%                          ] medium_256_both.nsys-rep[1/1] [5%                          ] medium_256_both.nsys-rep[1/1] [10%                         ] medium_256_both.nsys-rep[1/1] [===============67%          ] medium_256_both.nsys-rep[1/1] [====================83%     ] medium_256_both.nsys-rep[1/1] [========================100%] medium_256_both.nsys-rep[1/1] [========================100%] medium_256_both.nsys-rep
+Batch Size: 4, Test Type: both, Mean: 0.129185 s, Standard deviation (population): 0.000000 s, Times (s): [0.1291854961309582]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_256_both.nsys-rep
+exit=0, report_missing=False
+
+--- medium_512_baseline ---
+/home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 512 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 10
+Batch Size: 4, Test Type: forward, Mean: 0.074075 s, Standard deviation (population): 0.000178 s, Times (s): [0.07443303009495139, 0.07424703589640558, 0.07382287899963558, 0.07377452100627124, 0.07410314492881298, 0.07405666401609778, 0.07409831997938454, 0.07409699400886893, 0.0740299909375608, 0.07408632291480899]
+exit=0, report_missing=False
+
+--- medium_512_forward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_forward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 512 --batch_sizes 4 --warmup_steps 5 --test_types forward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-d9c5.qdstrm'
+[1/1] [0%                          ] medium_512_forward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_512_forward.nsys-rep[1/1] [===========50%              ] medium_512_forward.nsys-rep[1/1] [===========51%              ] medium_512_forward.nsys-rep[1/1] [================70%         ] medium_512_forward.nsys-rep[1/1] [=====================88%    ] medium_512_forward.nsys-rep[1/1] [========================100%] medium_512_forward.nsys-rep[1/1] [========================100%] medium_512_forward.nsys-rep
+Batch Size: 4, Test Type: forward, Mean: 0.075460 s, Standard deviation (population): 0.000000 s, Times (s): [0.0754597531631589]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_forward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_512_backward ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_backward /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 512 --batch_sizes 4 --warmup_steps 5 --test_types backward --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-6746.qdstrm'
+[1/1] [0%                          ] medium_512_backward.nsys-repProcessing events...
+[1/1] [0%                          ] medium_512_backward.nsys-rep[1/1] [0%                          ] medium_512_backward.nsys-rep[1/1] [===============67%          ] medium_512_backward.nsys-rep[1/1] [==================75%       ] medium_512_backward.nsys-rep[1/1] [====================83%     ] medium_512_backward.nsys-rep[1/1] [========================100%] medium_512_backward.nsys-rep[1/1] [========================100%] medium_512_backward.nsys-rep
+Batch Size: 4, Test Type: backward, Mean: 0.233097 s, Standard deviation (population): 0.000000 s, Times (s): [0.23309732601046562]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_backward.nsys-rep
+exit=0, report_missing=False
+
+--- medium_512_both ---
+/usr/local/cuda-12.9/bin/nsys profile --trace=cuda,nvtx --capture-range=nvtx --nvtx-capture=measurement --capture-range-end=stop -e NSYS_NVTX_PROFILER_REGISTER_ONLY=0 -o /home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_both /home/ubuntu/Song/Triton/.venv/bin/python -u -m cs336_systems.Profiling --d_model 1024 --d_ff 4096 --num_layers 24 --num_heads 16 --context_length 512 --batch_sizes 4 --warmup_steps 5 --test_types both --test_steps 1
+WARNING: Device-side CUDA Event completion trace is currently enabled.
+         This may increase runtime overhead and the likelihood of false
+         dependencies across CUDA Streams. If you wish to avoid this, please
+         disable the feature with --cuda-event-trace=false.
+WARNING: CPU IP/backtrace sampling not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+WARNING: CPU context switch tracing not supported, disabling.
+Try the 'nsys status --environment' command to learn more.
+
+Capture range started in the application.
+Capture range ended in the application.
+Generating '/tmp/nsys-report-6615.qdstrm'
+[1/1] [0%                          ] medium_512_both.nsys-repProcessing events...
+[1/1] [0%                          ] medium_512_both.nsys-rep[1/1] [0%                          ] medium_512_both.nsys-rep[1/1] [5%                          ] medium_512_both.nsys-rep[1/1] [9%                          ] medium_512_both.nsys-rep[1/1] [==============64%           ] medium_512_both.nsys-rep[1/1] [===================82%      ] medium_512_both.nsys-rep[1/1] [========================100%] medium_512_both.nsys-rep[1/1] [========================100%] medium_512_both.nsys-rep
+Batch Size: 4, Test Type: both, Mean: 0.267392 s, Standard deviation (population): 0.000000 s, Times (s): [0.2673924861010164]
+Generated:
+	/home/ubuntu/Song/Triton/nsys_medium_lp9w982j/medium_512_both.nsys-rep
+exit=0, report_missing=False
+Failures: 0
