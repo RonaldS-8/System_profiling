@@ -91,14 +91,17 @@ class Benchmarking:
                 torch.cuda.synchronize()
             with nvtx.range("measurement"):
                 for _ in range(test_steps):
-                    start_time = timeit.default_timer()
+                    # start_time = timeit.default_timer()
                     with nvtx.range("forward"):
                         output = self.model(input_ids)
                     with nvtx.range("loss"):
+                        start_time = timeit.default_timer()
                         loss = cross_entropy(output, input_ids)
                     with nvtx.range("zero_grad"):
                         self.optimizer.zero_grad()
+                        torch.cuda.synchronize()
                     with nvtx.range("backward"):
+                        start_time = timeit.default_timer()
                         loss.backward()
                     torch.cuda.synchronize() 
                     end_time = timeit.default_timer()
